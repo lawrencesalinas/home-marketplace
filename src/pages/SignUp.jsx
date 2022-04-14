@@ -39,6 +39,10 @@ function SignUp() {
             updateProfile(auth.currentUser, {
                 displayName: name
             })
+
+            navigate('/')
+        } catch (error)  {
+            console.log(error)
         }
     }
 
