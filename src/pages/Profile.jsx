@@ -10,13 +10,14 @@ function Profile() {
     const auth = getAuth()
     const [changeDetails, setChangeDetails] = useState(false)
     const [formData, setFormData] = useState({
-        name: auth.updateCurrentUser.displayName,
-        email: auth.updateCurrentUser.email
+        name: auth.currentUser.displayName,
+        email: auth.currentUser.email
     })
 
     const { name, email } = formData
 
     const navigate = useNavigate()
+
     const onLogout = () => {
         auth.signOut()
         navigate('/')
