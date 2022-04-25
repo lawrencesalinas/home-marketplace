@@ -819,3 +819,26 @@ button {
   font-size: 0.8rem;
   opacity: 0.75;
 }
+
+.appTitle{
+text-align: center;
+color: green;
+font-size: 2.5em;
+}
+
+.homeTitle{
+  
+  position: relative;
+top: 10px;
+  height: 50px;
+  color: green;
+
+}
+
+@media(max-width:480px){
+  .appTitle{
+    /* color: yellow; */
+    text-align: center;
+    font-size: 2em;
+  }
+}
