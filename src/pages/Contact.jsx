@@ -4,6 +4,9 @@ import {doc, getDoc} from 'firebase/firestore'
 import {db} from '../firebase.config'
 import {toast} from 'react-toastify'
 
+
+//------------------------------------------------------Contact Landlord page-------------------------------------------------------//
+
 function Contact() {
 const [message, setMessage] = useState('')
 const [landlord, setLanlord] = useState(null)

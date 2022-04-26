@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
-import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { db } from '../firebase.config'
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg'
-import { setDoc, doc, serverTimestamp} from 'firebase/firestore'
+import { setDoc, doc, serverTimestamp } from 'firebase/firestore'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 import OAuth from '../components/OAuth'
 
@@ -22,17 +22,19 @@ function SignUp() {
 
     const navigate = useNavigate()
 
+    
     const onChange = (e) => {
-     setFormData((prevState) => ({
-         ...prevState,
-         [e.target.id] : e.target.value
-     }))
+    // use input id to change input state
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.id]: e.target.value
+        }))
     }
 
+    //--------------------------------Sign up a user----------------------------------//
     const onSubmit = async (e) => {
         e.preventDefault()
-
-        try{
+        try {
             const auth = getAuth()
 
             // register user
@@ -44,7 +46,7 @@ function SignUp() {
             })
 
             // copy formData state, name and email
-            const formDataCopy = {...formData}
+            const formDataCopy = { ...formData }
             // delete password because we don't want  it on the database
             delete formDataCopy.password
             // set to timestamp
@@ -54,69 +56,75 @@ function SignUp() {
             await setDoc(doc(db, 'users', user.uid), formDataCopy)
 
             navigate('/')
-        } catch (error)  {
-           toast.error('Something went wrong with registration')
+        } catch (error) {
+            toast.error('Something went wrong with registration')
         }
     }
+    //----------------------------------------------------------------------------------//
 
 
 
-    return ( 
+    return (
         <>
-        <div className="pageContainer">
-            <header>
-                <p className="pageHeader">
-                    Welcome Back!
-                </p>
-            </header>
-            <main>
-                <form onSubmit={onSubmit}>
-                <input type="text" 
-                    className="nameInput" 
-                    placeholder='Name'
-                    id='name'
-                    value={name}
-                    onChange={onChange}
-                    />
-                    <input type="email" 
-                    className="emailInput" 
-                    placeholder='Email'
-                    id='email'
-                    value={email}
-                    onChange={onChange}
-                    />
+            <div className="pageContainer">
+                <header>
+                    <p className="pageHeader">
+                        Welcome Back!
+                    </p>
+                </header>
+                <main>
 
-                    <div className="passwordInputDiv">
-                        <input type={showPassword ? 'text' : 'password'}
-                         className='passwordInput'
-                         placeholder='Password'
-                         id='password'
-                         value={password}
-                         onChange={onChange}
-                         />
+                {/* ------------Sign up form inputs ---------------*/}
+                    <form onSubmit={onSubmit}>
+                        <input type="text"
+                            className="nameInput"
+                            placeholder='Name'
+                            id='name'
+                            value={name}
+                            onChange={onChange}
+                        />
+                        <input type="email"
+                            className="emailInput"
+                            placeholder='Email'
+                            id='email'
+                            value={email}
+                            onChange={onChange}
+                        />
+                        <div className="passwordInputDiv">
+                            <input type={showPassword ? 'text' : 'password'}
+                                className='passwordInput'
+                                placeholder='Password'
+                                id='password'
+                                value={password}
+                                onChange={onChange}
+                            />
+                            <img src={visibilityIcon} alt="showPassword"
+                                className="showPassword"
+                                onClick={() => setShowPassword((prevState) => !prevState)} />
+                        </div>
+                    {/* ---------------------------------------------- */}
 
-                         <img src={visibilityIcon} alt="showPassword" 
-                         className="showPassword" 
-                         onClick={() => setShowPassword((prevState) => !prevState)} />
-                    </div>
-                    <Link to='/forgot-password' className='forgotPasswordLink'>
-                        Forgot Password
+                        <Link to='/forgot-password' className='forgotPasswordLink'>
+                            Forgot Password
+                        </Link>
+                        <div className="signUpBar">
+                            <p className="signUpText">
+                                Sign Up
+                            </p>
+                            <button className="signUpButton">
+                                <ArrowRightIcon fill='#ffffff' width='34px' height='34px' />
+                            </button>
+                        </div>
+                    </form>
+
+                    {/* sign up/sign-in with google */}
+                    <OAuth />
+                    
+                    <Link to='/sign-in' className='registerLink'>
+                        Sign In Instead
                     </Link>
-                    <div className="signUpBar">
-                        <p className="signUpText">
-                            Sign Up
-                        </p>
-                        <button className="signUpButton">
-                            <ArrowRightIcon fill='#ffffff' width='34px' height='34px' />
-                        </button>
-                    </div>
-                </form>
-               <OAuth/>
-                <Link to='/sign-in' className='registerLink'>
-                    Sign In Instead
-                </Link>
-            </main>
-        </div>
+                </main>
+            </div>
         </>
     )
 }

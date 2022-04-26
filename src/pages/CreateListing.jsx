@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import Spinner from '../components/Spinner'
 import { toast } from 'react-toastify'
 
+//---------------------------------------------------------Create a listing page--------------------------------------------------------------//
 
 function CreateListing() {
     const [loading, setLoading] = useState(false)
@@ -28,11 +29,13 @@ function CreateListing() {
         longitude: 0
     })
 
+    // destructure formData for cleaner code
     const { type, name, bedrooms, bathrooms, parking, furnished, address, offer, regularPrice, discountedPrice, images, latitude, longitude } = formData
 
     const auth = getAuth()
     const navigate = useNavigate()
     const isMounted = useRef(true)
+
 
     useEffect(() => {
         if (isMounted) {
@@ -52,16 +55,18 @@ function CreateListing() {
     }, [isMounted])
 
 
+    //--------------------------------------------------------------Submit and create a listing---------------------------------------------------------------//
     const onSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
 
-        // check if discounted price is greater than regular price
+        //---check if discounted price is greater than regular price-----//
         if (discountedPrice >= regularPrice) {
             setLoading(false)
             toast.error('Dscounted price needs to be less than regular price')
             return
         }
+
 
         // check if there are more than 6 images being uploaded
         if (images.length > 6) {
@@ -70,10 +75,11 @@ function CreateListing() {
             return
         }
 
+        // -------Address and geoclocation-------------//
         let geolocation = {}
         let location
 
-        // check if geolocation is enbaled or manual
+        // check if geolocation is enbaled or manual , if enabled, use google geocoding API for geolocation latitude and longitude
         if (geolocationEnabled) {
             const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`)
             const data = await response.json()
@@ -95,8 +101,10 @@ function CreateListing() {
             geolocation.lat = latitude
             geolocation.lng = longitude
         }
+        //-------------------------------------------------//
 
-        // store images in firebase
+        
+        //-------store images in firebase-----------------//
         const storeImage = async (image) => {
             return new Promise((resolve, reject) => {
                 const storage = getStorage()
@@ -136,7 +144,6 @@ function CreateListing() {
                 )
             })
         }
-
         const imageUrls = await Promise.all(
             [...images].map((image) => storeImage(image))
         ).catch(() => {
@@ -144,6 +151,7 @@ function CreateListing() {
             toast.error('Images not uploaded')
             return
         })
+        //----------------------------------------------------//
 
         const formDataCopy = {
             ...formData,
@@ -165,9 +173,13 @@ function CreateListing() {
         toast.success('Listing saved')
         navigate(`/category/${formDataCopy.type}/${docRef.id}`)
     }
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 
+
+    //-------------------------------------------------Handle user form inputs----------------------------------------------------//
     const onMutate = (e) => {
+
         let boolean = null
         if (e.target.value === 'true') {
             boolean = true
@@ -175,6 +187,7 @@ function CreateListing() {
         if (e.target.value === 'false') {
             boolean = false
         }
+
         // files
         if (e.target.files) {
             setFormData((prevState) => ({
@@ -194,10 +207,12 @@ function CreateListing() {
         }
 
     }
+    //------------------------------------------------------------------------------------------------------------------------------//
 
     if (loading) {
         return <Spinner />
     }
+    
     return (
         <div className='profile'>
             <header>

@@ -28,6 +28,8 @@ function ListingItem({ listing, id, onDelete }) {
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         {listing.type === 'rent' && '/ Month'}
                     </p>
+
+
                     <div className="categoryListingInfoDiv">
                         <img src={bedIcon} alt='bed' />
                         <p className="categoryListingInfoText">
@@ -38,8 +40,11 @@ function ListingItem({ listing, id, onDelete }) {
                             {listing.bathrooms > 1 ? `${listing.bathrooms} Bathrooms` : '1 Bathroom'}
                         </p>
                     </div>
+            
                 </div>
             </Link>
+
+            {/* -------------------------Delete lisitng ----------------------------------------*/}
             {onDelete && (
                 <DeleteIcon className='removeIcon'
                     fill='rgb(231,76,60)' onClick={() => onDelete(listing.id, listing.name)}

@@ -5,13 +5,14 @@ import { toast } from 'react-toastify'
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg'
 
 
-
+//--------------------------------------------------------------Forgot Password Page-------------------------------------------------------------//
 function ForgotPasword() {
   const [email, setEmail]= useState('')
 
   const onChange = (e) => {
     setEmail(e.target.value)
   }
+
 
   const onSubmit = async(e) => {
     e.preventDefault()

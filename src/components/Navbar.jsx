@@ -7,6 +7,7 @@ function Navbar() {
     const navigate = useNavigate()
     const location = useLocation()
 
+    //--------check if route matches---//
     const pathMatchRoute = (route) => {
         if(route === location.pathname){
             return true
@@ -16,6 +17,8 @@ function Navbar() {
   return (
     <footer className='navbar'>
         <nav className="navbarNav">
+
+            {/* if pathMatchRoute is true, chage Navbar buttton class to active for dynamic UX and UI experience */}
             <ul className="navbarListItems">
                 <li className="navbarListItem" onClick={() => navigate('/') }>
                     <ExploreIcon fill={pathMatchRoute('/') ? '#2c2c2c':'#8f8f8f'} width='36px' height='36px'/>
@@ -30,6 +33,8 @@ function Navbar() {
                     <p className={pathMatchRoute('/profile') ? 'navBarListItemNameActive':'navbarListItemName'}>Profile</p>
                 </li>
             </ul>
+            {/* ------------------------------------------------------------------------------------------------------- */}
+
         </nav>
     </footer>
   )

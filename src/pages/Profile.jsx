@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { updateDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase.config'
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
 import homeIcon from '../assets/svg/homeIcon.svg'
 
-
+//------------------------------------------------------User Profile page-----------------------------------------------------------------//
 function Profile() {
     const auth = getAuth()
     const [changeDetails, setChangeDetails] = useState(false)
@@ -20,14 +20,16 @@ function Profile() {
 
     const navigate = useNavigate()
 
+    //--------logut user-----------//
     const onLogout = () => {
         auth.signOut()
         navigate('/')
     }
 
-    const onSubmit = async() => {
-        try{
-            if(auth.currentUser.displayName !== name){
+    //--------update user details-----------------------//
+    const onSubmit = async () => {
+        try {
+            if (auth.currentUser.displayName !== name) {
                 // update display name in  fb
                 await updateProfile(auth.currentUser, {
                     displayName: name
@@ -38,12 +40,13 @@ function Profile() {
                     name,
                 })
             }
-        } catch(error){
+        } catch (error) {
             console.log(error);
             toast.error('Could not update profile details')
-
         }
     }
+    //----------------------------------------------------//
+
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -61,18 +64,21 @@ function Profile() {
                 <button className="logOut" onClick={onLogout}>Logout</button>
             </header>
             <main>
-                <div  className='profileDetailsHeader'>
-                <p className='profileDetailsText'>Personal Details</p>
-                <p className="chagePersonalDetails" onClick={() => {
-                    changeDetails && onSubmit()
-                    setChangeDetails((prevState) => !prevState)
-                }}
-                >
-                    {changeDetails ? 'done' : 'change'}
-                </p>
+                <div className='profileDetailsHeader'>
+                    <p className='profileDetailsText'>Personal Details</p>
+
+                    {/* -------Update user details dynamically, if button is clicked, button toggles between change and done --------*/}
+                    <p className="chagePersonalDetails" onClick={() => {
+                        changeDetails && onSubmit()
+                        setChangeDetails((prevState) => !prevState)
+                    }}>
+                        {changeDetails ? 'done' : 'change'}
+                    </p>
                 </div>
+                {/* ----------------------------------------------------------------------------------------------------------- */}
 
 
+                {/* ---------------Update user form and inputs---------------------------------------- */}
                 <div className="profileCard">
                     <form>
                         <input type="text"
@@ -91,6 +97,8 @@ function Profile() {
                         />
                     </form>
                 </div>
+                {/* --------------------------------------------------------------------------------- */}
+
                 <Link to='/create-listing' className='createListing'>
                     <img src={homeIcon} alt="home" />
                     <p>Sell or rent your home</p>

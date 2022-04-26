@@ -49,6 +49,8 @@ function Category() {
 
 
   return (
+
+
     <div className='category'>
         <header>
             <p className="pageHeader">
