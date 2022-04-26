@@ -3,7 +3,7 @@ import { ReactComponent as DeleteIcon } from '../assets/svg/deleteIcon.svg'
 import bedIcon from '../assets/svg/bedIcon.svg'
 import bathtubIcon from '../assets/svg/bathtubIcon.svg'
 
-
+//---------------------- Listing item on expolore page ---------------------------------------------//
 function ListingItem({ listing, id, onDelete }) {
     return (
         <li className="categoryListing">
@@ -17,7 +17,7 @@ function ListingItem({ listing, id, onDelete }) {
                         {listing.name}
                     </p>
 
-                    {/* if there is an offer(discounted price show the discounted price with commas) */}
+                    {/* -----if there is an offer(discounted price)show the discounted price with commas)----- */}
                     <p className="categoryListingPrice">
                         {listing.offer
                             ? listing.discountedPrice
@@ -28,7 +28,8 @@ function ListingItem({ listing, id, onDelete }) {
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         {listing.type === 'rent' && '/ Month'}
                     </p>
-
+                    {/* -------------------------------------------------------------------------------------- */}
+                    
 
                     <div className="categoryListingInfoDiv">
                         <img src={bedIcon} alt='bed' />

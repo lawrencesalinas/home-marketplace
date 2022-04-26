@@ -19,7 +19,7 @@ function App() {
   return (
    <>
   <Router>
-  <TItle/>
+  {/* <TItle/> */}
     <Routes>
      
       <Route path='/' element={<Explore/>} />

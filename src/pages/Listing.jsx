@@ -9,6 +9,7 @@ import { getAuth } from 'firebase/auth'
 import { db } from '../firebase.config'
 import Spinner from '../components/Spinner'
 import shareIcon from '../assets/svg/shareIcon.svg'
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 //--------------------------------------------------------------Listing Details page--------------------------------------------------------------//
 
@@ -41,12 +42,28 @@ function Listing() {
   if (loading) {
     return <Spinner />
   }
-// ---------------------------------------------------------------//
+  // ---------------------------------------------------------------//
 
 
   return (
     <main>
-      {/* slider */}
+      {/*------------------- Listing Images using Swiper----------------------- */}
+      <Swiper slidesPerView={1} pagination={{ clickable: true }} style={{height:'300px'}}>
+        {listing.imageUrls.map((url, index) => (
+          console.log(url),
+          <SwiperSlide key={index}>
+            <div 
+            style={{
+              background: `url(${listing.imageUrls[index]}) 
+            center no-repeat`,
+              backgroundSize: 'cover',
+            }}
+              className="swiperSlideDiv"></div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {/* --------------------------------------------------------------------- */}
+
 
       {/* ---------copy the url to the clipboard to share link-------------- */}
       <div className="shareIconDiv" onClick={() => {
@@ -59,7 +76,7 @@ function Listing() {
         <img src={shareIcon} alt="shareIcon" />
       </div>
       {shareLinkCopied && <p className="linkCopied">Link Copied</p>}
-      {/*-----------------------------------------------------------------------*/}
+      {/*---------------------------------------------------------------------*/}
 
 
       {/*---------------------------- Listing details-------------------------------- */}
@@ -87,10 +104,10 @@ function Listing() {
           <li>{listing.parking && 'Parking Spot'}</li>
           <li>{listing.furnished && 'Furnished'}</li>
         </ul>
-        {/*----------------------------------------------------------------------------------------------*/}
+        {/*-----------------------------------------------------------------------------*/}
 
 
-        {/*--------------------- Lisitng address and Map interface using Leaflet -----------------------*/}
+        {/*--------------------- Lisitng address and Map interface using Leaflet ---------------------*/}
         <p className="listingLocationTitle">
           Location
         </p>
@@ -114,7 +131,7 @@ function Listing() {
             Contact Landlord
           </Link>
         )}
-        {/*--------------------------------------------------------------------------------------------*/}
+        {/*----------------------------------------------------------------------------------------------*/}
 
       </div>
     </main>

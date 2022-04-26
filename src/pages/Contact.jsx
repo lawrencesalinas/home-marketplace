@@ -14,6 +14,7 @@ const [serachParams, setSearchParams] = useSearchParams()
 
 const params = useParams()
 
+//---fetch landlord data using the url params and landlordId--//
 useEffect(() => {
     const getLandlord = async() => {
         const docRef = doc(db, 'users', params.landlordId)
@@ -31,6 +32,7 @@ useEffect(() => {
 const onChange = (e) => {
   setMessage(e.target.value)
 }
+// --------------------------------------------------------//
 
   return (
     <div className='pageContainer'>
@@ -54,11 +56,14 @@ const onChange = (e) => {
               <textarea name="message" id="message" className='textarea' value={message} onChange={onChange}></textarea>
             </div>
 
+          {/* ---Send message to the landlord using user's email system with pretyped data ---------*/}
             <a href={`mailto:${landlord.email}?Subject=${serachParams.get('listingName')}&body=${message}`}>
               <button type='button' className="primaryButton">
                 Send Message
               </button>
             </a>
+          {/* ------------------------------------------------------------------------------------- */}
+
           </form>
         </main>
       )}

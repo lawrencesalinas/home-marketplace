@@ -5,11 +5,14 @@ import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
 import ListingItem from '../components/ListingItem'
 
+//--------------------------------------------- Offer page to show discounted lisitings ---------------------------------------------//
 
 function Offers() {
     const [listings, setListings] = useState(null)
     const [loading, setLoading] = useState(true)
 
+
+    //-------------fetch listings that have discount offers-----------------------------//
     useEffect(() => {
         const fetchListings = async() => {
             try {
@@ -37,7 +40,6 @@ function Offers() {
                         data: doc.data()
                     })
                 })
-
                 setListings(listings)
                 setLoading(false)
             } catch (error) {
@@ -46,6 +48,7 @@ function Offers() {
         }
         fetchListings()
     },[])
+    //-----------------------------------------------------------------------------------//
 
 
   return (
@@ -55,6 +58,7 @@ function Offers() {
               Offers
             </p>
         </header>
+        
         {/* if data is loading show spinner, if there is listings and greater than 0 or else show no listings? */}
         {loading ? <Spinner/> : listings && listings.length > 0 ? 
         <>

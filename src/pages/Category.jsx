@@ -6,6 +6,7 @@ import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
 import ListingItem from '../components/ListingItem'
 
+//---------------------------------------------Category page for rent properties  or for sale properties------------------------------------------------------//
 
 function Category() {
     const [listings, setListings] = useState(null)
@@ -13,6 +14,8 @@ function Category() {
 
     const params = useParams()
 
+
+    //----fetch rent listings or for sale listings beased  on url parameters.---//
     useEffect(() => {
         const fetchListings = async() => {
             try {
@@ -37,7 +40,6 @@ function Category() {
                         data: doc.data()
                     })
                 })
-
                 setListings(listings)
                 setLoading(false)
             } catch (error) {
@@ -46,10 +48,10 @@ function Category() {
         }
         fetchListings()
     },[params.categoryName])
+//-----------------------------------------------------------------------------//
 
 
   return (
-
 
     <div className='category'>
         <header>
