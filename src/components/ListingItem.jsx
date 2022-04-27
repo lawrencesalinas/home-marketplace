@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom'
 import { ReactComponent as DeleteIcon } from '../assets/svg/deleteIcon.svg'
 import bedIcon from '../assets/svg/bedIcon.svg'
 import bathtubIcon from '../assets/svg/bathtubIcon.svg'
+import formatMoney from '../utils/formatMoney'
 
 //---------------------- Listing item on expolore page ---------------------------------------------//
+
 function ListingItem({ listing, id, onDelete }) {
     return (
         <li className="categoryListing">
@@ -20,12 +22,9 @@ function ListingItem({ listing, id, onDelete }) {
                     {/* -----if there is an offer(discounted price)show the discounted price with commas)----- */}
                     <p className="categoryListingPrice">
                         {listing.offer
-                            ? listing.discountedPrice
-                                .toString()
-                                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                            : listing.regularPrice
-                                .toString()
-                                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                            ? formatMoney(listing.discountedPrice)
+                            : formatMoney(listing.regularPrice)}
+                    
                         {listing.type === 'rent' && '/ Month'}
                     </p>
                     {/* -------------------------------------------------------------------------------------- */}
@@ -48,7 +47,8 @@ function ListingItem({ listing, id, onDelete }) {
             {/* -------------------------Delete lisitng ----------------------------------------*/}
             {onDelete && (
                 <DeleteIcon className='removeIcon'
-                    fill='rgb(231,76,60)' onClick={() => onDelete(listing.id, listing.name)}
+                    fill='rgb(231,76,60)' 
+                    onClick={() => onDelete(listing.id, listing.name)}
                 />
             )}
         </li>

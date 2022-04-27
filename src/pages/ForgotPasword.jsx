@@ -13,7 +13,7 @@ function ForgotPasword() {
     setEmail(e.target.value)
   }
 
-
+  //------------send a password reset to user email--------//
   const onSubmit = async(e) => {
     e.preventDefault()
     try {
@@ -24,6 +24,7 @@ function ForgotPasword() {
       toast.error('could not send reset email')
     }
   }
+  //----------------------------------------------------//
 
   return (
     <div className="pageConttainer">

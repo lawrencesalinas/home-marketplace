@@ -9,6 +9,7 @@ import { getAuth } from 'firebase/auth'
 import { db } from '../firebase.config'
 import Spinner from '../components/Spinner'
 import shareIcon from '../assets/svg/shareIcon.svg'
+import formatMoney from '../utils/formatMoney'
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 //--------------------------------------------------------------Listing Details page--------------------------------------------------------------//
@@ -50,7 +51,6 @@ function Listing() {
       {/*------------------- Listing Images using Swiper----------------------- */}
       <Swiper slidesPerView={1} pagination={{ clickable: true }} style={{height:'300px'}}>
         {listing.imageUrls.map((url, index) => (
-          console.log(url),
           <SwiperSlide key={index}>
             <div 
             style={{
@@ -82,7 +82,7 @@ function Listing() {
       {/*---------------------------- Listing details-------------------------------- */}
       <div className="listingDetails">
         <p className="listingName">
-          {listing.name} - ${listing.offer ? listing.discountedPrice : listing.regularPrice}
+          {listing.name} - {listing.offer ? formatMoney(listing.discountedPrice) : formatMoney(listing.regularPrice)}
         </p>
         <p className="listingLocation">{listing.location}</p>
         <p className="listingType">
