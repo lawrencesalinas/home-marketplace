@@ -29,6 +29,7 @@ function Profile() {
         const fetchUserListings = async () => {
             const listingRef = collection(db, 'listings')
             const q = query(listingRef, where('userRef', '==', auth.currentUser.uid), orderBy('timestamp', 'desc'))
+            // Execute query
             const querySnap = await getDocs(q)
 
             let listings = []
@@ -38,7 +39,6 @@ function Profile() {
                     data: doc.data()
                 })
             })
-            console.log(listings);
             setListings(listings)
             setLoading(false)
         }
@@ -158,10 +158,11 @@ function Profile() {
                             {listings.map((listing => (
                                 <ListingItem key={listing.id} listing={listing.data} id={listing.id} onDelete={() => onDelete(listing.id)} />
                             )))}
-
                         </ul>
                     </>
                 )}
+                {/* ----------------------------------------------------------- */}
+
             </main>
         </div>
     )
