@@ -40,6 +40,10 @@ function Slider() {
     }
     //-------------------------------------------//
 
+    if(listings.length === 0){
+        return <></>
+    }
+
     return (
         <>
             <p className="exploreHeading">Recommended</p>
