@@ -11,8 +11,9 @@ import { toast } from 'react-toastify'
 //---------------------------------------------------------Create a listing page--------------------------------------------------------------//
 
 function CreateListing() {
-    const [loading, setLoading] = useState(false)
+    // eslint-disable-next-line
     const [geolocationEnabled, setGeoLocationEnabled] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         type: 'rent',
         name: '',
@@ -128,6 +129,8 @@ function CreateListing() {
                             case 'running':
                                 console.log('Upload is running');
                                 break;
+                            default: 
+                                break
                         }
                     },
                     (error) => {

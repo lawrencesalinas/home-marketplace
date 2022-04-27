@@ -8,9 +8,10 @@ import {toast} from 'react-toastify'
 //------------------------------------------------------Contact Landlord page-------------------------------------------------------//
 
 function Contact() {
+  // eslint-disable-next-line
+const [searchParams, setSearchParams] = useSearchParams()
 const [message, setMessage] = useState('')
 const [landlord, setLanlord] = useState(null)
-const [serachParams, setSearchParams] = useSearchParams()
 
 const params = useParams()
 
@@ -57,7 +58,7 @@ const onChange = (e) => {
             </div>
 
           {/* ---Send message to the landlord using user's email system with pretyped data ---------*/}
-            <a href={`mailto:${landlord.email}?Subject=${serachParams.get('listingName')}&body=${message}`}>
+            <a href={`mailto:${landlord.email}?Subject=${searchParams.get('listingName')}&body=${message}`}>
               <button type='button' className="primaryButton">
                 Send Message
               </button>
