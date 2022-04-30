@@ -1,3 +1,4 @@
+![houses](https://user-images.githubusercontent.com/22379194/166091381-772eb507-2e13-44d1-8d8b-f23431395c54.gif)
 # Honey Comb Homes
 
 Find and list houses for sale or for rent. This is a React / Firebase v9 project.
@@ -51,9 +52,7 @@ npm install
 npm start
 ```
 
-- On your browser, navigate to localhost3000 and the project automatically appears on your locally hosted web page, similar to this screenshot:
-
-<img alt="project" src="project_view.png">
+- On your browser, navigate to localhost3000 and the project automatically appears on your locally hosted web page,
 
 
 ## Cloud Deployment
