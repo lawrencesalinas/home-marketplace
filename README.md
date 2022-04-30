@@ -1,4 +1,4 @@
-![houses](https://user-images.githubusercontent.com/22379194/166091381-772eb507-2e13-44d1-8d8b-f23431395c54.gif)
+<div style="text-align:center"><img src="./src/assets/jpg/houses.gif" /></div>.
 # Honey Comb Homes
 
 Find and list houses for sale or for rent. This is a React / Firebase v9 project.
