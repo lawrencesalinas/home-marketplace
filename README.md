@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="600" height="400" src="./src/assets/jpg/houses.gif">
+  <img width="700" height="450" src="./src/assets/jpg/houses.gif">
 </p>
 
 # Honey Comb Homes
@@ -60,7 +60,7 @@ npm start
 
 ## Cloud Deployment
 
-The app repo is  deployed on Vercel [https://honey-comb-home.vercel.app/)]
+The app repo is  deployed on Vercel [here](https://honey-comb-home.vercel.app/)
 
 ## Contributors
 
