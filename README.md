@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="600" height="200" src="./src/assets/jpg/houses.gif">
+  <img width="600" height="400" src="./src/assets/jpg/houses.gif">
 </p>
 
 # Honey Comb Homes
