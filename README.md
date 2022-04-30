@@ -1,7 +1,6 @@
 # Honey Comb Homes
 
 Find and list houses for sale or for rent. This is a React / Firebase v9 project.
-<<<<<<< HEAD
 
 ## Tech stack
 
@@ -26,8 +25,39 @@ As a user, I want to:
 
 The listings use Google geocoding to get the coords from the address field. You need to either rename .env.example to .env and add your Google Geocode API key OR in the **CreateListing.jsx** file you can set **geolocationEnabled** to "false" and it will add a lat/lng field to the form.
 
-### Run
 
-```bash
-npm start
+- In a terminal, clone this repo
+
+```sh
+git clone https://github.com/lawrencesalinas/honey-comb-homes.git
 ```
+
+- Navigate to the repo folder
+
+```sh
+cd hooney-comb-homes
+```
+
+- Install the project dependencies:
+
+```sh
+npm install
+```
+
+- Deploy the project on your local machine
+
+```sh
+npm start
+
+- On your browser, navigate to localhost3000 and the project automatically appears on your locally hosted web page, similar to this screenshot:
+
+<img alt="project" src="project_view.png">
+
+
+## Cloud Deployment
+
+The appt repos is  deployed on Vercel [here]https://honey-comb-home.vercel.app/)
+
+## Contributors
+
+- [Mackenzie Miller](https://github.com/Mackmiller)
