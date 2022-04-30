@@ -4,7 +4,7 @@
 
 # Honey Comb Homes
 
-Find and list houses for sale or for rent. This is a React / Firebase v9 project.
+Find and list houses for sale or for rent. Honey Comb Homesis a React / Firebase v9 project. a CRUD application that utilizes the firebase environment. React.js to create the front-end, firebase authentication to handle authentication and firebase store database.
 
 ## Tech stack
 
@@ -60,7 +60,7 @@ npm start
 
 ## Cloud Deployment
 
-The app repo is  deployed on Vercel [here]https://honey-comb-home.vercel.app/)
+The app repo is  deployed on Vercel [https://honey-comb-home.vercel.app/)]
 
 ## Contributors
 
