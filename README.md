@@ -1,4 +1,7 @@
-<div style="text-align:center"><img src="./src/assets/jpg/houses.gif" /></div>.
+<p align="center">
+  <img width="600" height="200" src="./src/assets/jpg/houses.gif">
+</p>
+
 # Honey Comb Homes
 
 Find and list houses for sale or for rent. This is a React / Firebase v9 project.
