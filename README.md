@@ -9,11 +9,12 @@ Find and list houses for sale or for rent. This is a React / Firebase v9 project
 ## User flows
 
 As a user, I want to:
-- view rental/for sale properties listings on the landing page
+- view rental/for sale property listings on the landing page
 - view "rental properties" and "for sale properties" seperately
 - log-in/sign-up  to use the web application and post a listing
 - log-in/sign-up option using a Google account
-- view a property's details(no. of bedrooms/bathrroms, address, for sale/ for rent,)
+- view a property's details(no. of bedrooms/bathrroms, address, for sale/ for rent, price, discount amount, parking, furnished)
+- view an offers page for discounted listings
 - view the property's address using a map interface
 - post a house listing with option to rent or sell
 - edit or delete  property listings.
@@ -48,6 +49,7 @@ npm install
 
 ```sh
 npm start
+```
 
 - On your browser, navigate to localhost3000 and the project automatically appears on your locally hosted web page, similar to this screenshot:
 
@@ -56,8 +58,8 @@ npm start
 
 ## Cloud Deployment
 
-The appt repos is  deployed on Vercel [here]https://honey-comb-home.vercel.app/)
+The app repo is  deployed on Vercel [here]https://honey-comb-home.vercel.app/)
 
 ## Contributors
 
-- [Mackenzie Miller](https://github.com/Mackmiller)
+- [Lawrence Salinas](https://github.com/lawrencesalinas)
