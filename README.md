@@ -1,6 +1,7 @@
 # Honey Comb Homes
 
 Find and list houses for sale or for rent. This is a React / Firebase v9 project.
+<<<<<<< HEAD
 
 ## Tech stack
 
@@ -12,10 +13,12 @@ As a user, I want to:
 - view rental/for sale properties listings on the landing page
 - view "rental properties" and "for sale properties" seperately
 - log-in/sign-up  to use the web application and post a listing
-- post a listing with option no. of bedrooms/bathrooms, 
-- log-in/sign-up using a Google account
-- view the properties address using a map interface
+- log-in/sign-up option using a Google account
+- view a property's details(no. of bedrooms/bathrroms, address, for sale/ for rent,)
+- view the property's address using a map interface
+- post a house listing with option to rent or sell
 - edit or delete  property listings.
+
 
 ## Usage
 
