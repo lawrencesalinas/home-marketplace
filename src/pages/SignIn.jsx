@@ -6,7 +6,6 @@ import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRig
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 import OAuth from '../components/OAuth'
 
-
 function SignIn() {
     const [showPassword, setShowPassword] = useState(false)
     const [formData, setFormData] = useState({
@@ -25,6 +24,7 @@ function SignIn() {
         }))
     }
 
+    // --------------------Sign in user-------------------------------------/
     const onSubmit = async (e) => {
         e.preventDefault()
 
@@ -39,8 +39,8 @@ function SignIn() {
         } catch (error) {
             toast.error('Bad User Credentials')
         }
-
     }
+        // ----------------------------------------------------------------/
 
 
 
@@ -53,6 +53,8 @@ function SignIn() {
                     </p>
                 </header>
                 <main>
+
+                    {/* ------------Sign up form inputs ---------------*/}
                     <form onSubmit={onSubmit}>
                         <input type="email"
                             className="emailInput"
@@ -70,11 +72,13 @@ function SignIn() {
                                 value={password}
                                 onChange={onChange}
                             />
-
+                            {/* show or hide password button */}
                             <img src={visibilityIcon} alt="showPassword"
                                 className="showPassword"
                                 onClick={() => setShowPassword((prevState) => !prevState)} />
                         </div>
+                        {/* -------------------------------------------------*/}
+
                         <Link to='/forgot-password' className='forgotPasswordLink'>
                             Forgot Password
                         </Link>

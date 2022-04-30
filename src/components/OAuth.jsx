@@ -5,10 +5,14 @@ import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
 import googleIcon from '../assets/svg/googleIcon.svg'
 
+
+//-----------------Google sign-in/Sign-up feauture------------------------------//
 function OAuth() {
   const navigate = useNavigate()
   const location = useLocation()
 
+
+//----------sign up using google account-----------------//
   const onGoogleClick = async () => {
     try {
       const auth = getAuth()
@@ -37,9 +41,8 @@ function OAuth() {
     } catch (error) {
       toast.error('Could not authorize with google')
     }
-
   }
-
+  //----------------------------------------------------//
 
   return (
     <div className='socialLogin'>

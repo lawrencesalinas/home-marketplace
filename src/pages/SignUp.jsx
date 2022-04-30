@@ -117,9 +117,9 @@ function SignUp() {
                         </div>
                     </form>
 
-                    {/* sign up/sign-in with google */}
+                    {/* sign up with google */}
                     <OAuth />
-                    
+
                     <Link to='/sign-in' className='registerLink'>
                         Sign In Instead
                     </Link>
