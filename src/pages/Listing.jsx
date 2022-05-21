@@ -47,17 +47,17 @@ function Listing() {
 
 
   return (
-    <main>
+    <main >
       {/*------------------- Listing Images using Swiper----------------------- */}
-      <Swiper slidesPerView={1} pagination={{ clickable: true }} style={{height:'300px'}}>
+      <Swiper slidesPerView={1} pagination={{ clickable: true }} style={{ height: '300px' }}>
         {listing.imageUrls.map((url, index) => (
           <SwiperSlide key={index}>
-            <div 
-            style={{
-              background: `url(${listing.imageUrls[index]}) 
+            <div data-aos='zoom-in'
+              style={{
+                background: `url(${listing.imageUrls[index]}) 
             center no-repeat`,
-              backgroundSize: 'cover',
-            }}
+                backgroundSize: 'cover',
+              }}
               className="swiperSlideDiv"></div>
           </SwiperSlide>
         ))}
@@ -111,7 +111,7 @@ function Listing() {
         <p className="listingLocationTitle">
           Location
         </p>
-        <div className="leafletContainer">
+        <div className="leafletContainer" data-aos='zoom-in'>
           <MapContainer style={{ height: '100%', width: '100%' }} center={[listing.geolocation.lat, listing.geolocation.lng]} zoom={13} scrollWheelZoom={false}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

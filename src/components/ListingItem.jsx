@@ -11,8 +11,8 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
     return (
         <li className="categoryListing">
             <Link to={`/category/${listing.type}/${id}`} className='categoryListingLink'>
-                <img src={listing.imageUrls[0]} alt={listing.name} className='categoryListingImg' />
-                <div className="categoryListingDetails">
+                <img src={listing.imageUrls[0]} alt={listing.name} className='categoryListingImg' data-aos='flip-right' data-aos-delay='800' />
+                <div className="categoryListingDetails" data-aos='fade-left'>
                     <p className="categoryListingLocation">
                         {listing.location}
                     </p>
@@ -46,20 +46,24 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
             </Link>
 
             {/* -------------------------Delete lisitng ----------------------------------------*/}
-            {onDelete && (
-                <DeleteIcon className='removeIcon'
-                    fill='rgb(231,76,60)'
-                    onClick={() => onDelete(listing.id, listing.name)}
-                />
-            )}
+            {
+                onDelete && (
+                    <DeleteIcon className='removeIcon'
+                        fill='rgb(231,76,60)'
+                        onClick={() => onDelete(listing.id, listing.name)}
+                    />
+                )
+            }
 
             {/* -------------------------Edit lisitng ----------------------------------------*/}
-            {onEdit && (
-                <EditIcon className='editIcon'
-                    onClick={() => onEdit(listing.id)}
-                />
-            )}
-        </li>
+            {
+                onEdit && (
+                    <EditIcon className='editIcon'
+                        onClick={() => onEdit(listing.id)}
+                    />
+                )
+            }
+        </li >
     )
 }
 

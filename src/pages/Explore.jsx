@@ -5,7 +5,7 @@ import Slider from '../components/Slider'
 
 function Explore() {
   return (
-    <div className="explore">
+    <div className="explore" data-aos='fade-in'>
       <header>
         <p className="pageHeader">
           Explore

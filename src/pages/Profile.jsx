@@ -91,7 +91,7 @@ function Profile() {
             await deleteDoc(doc(db, 'listings', listingId))
             const updateListings = listings.filter(
                 (listing) => listing.id !== listingId
-                )
+            )
             setListings(updateListings)
             toast.success('Successfully deleted listing')
         }
@@ -99,21 +99,21 @@ function Profile() {
     //-----------------------------------------------------//
 
     //------Navigate to Edit a listing page-------//
-    const onEdit = (listingId)=> {
+    const onEdit = (listingId) => {
         navigate(`/edit-listing/${listingId}`)
     }
     //--------------------------------------------//
 
     return (
         <div className="profile">
-            <header className="profileHeader">
+            <header className="profileHeader" data-aos='fade-right'>
                 <p className="pageHeader">
                     My Profile
                 </p>
                 <button className="logOut" onClick={onLogout}>Logout</button>
             </header>
             <main>
-                <div className='profileDetailsHeader'>
+                <div className='profileDetailsHeader' data-aos='fade-right'>
                     <p className='profileDetailsText'>Personal Details</p>
 
                     {/* -------Update user details dynamically, if button is clicked, button toggles between change and done --------*/}
@@ -130,7 +130,7 @@ function Profile() {
 
 
                 {/* ---------------Update user form and inputs---------------------------------------- */}
-                <div className="profileCard">
+                <div className="profileCard" data-aos='fade-right'>
                     <form>
                         <input type="text"
                             id="name"
@@ -150,7 +150,7 @@ function Profile() {
                 </div>
                 {/* --------------------------------------------------------------------------------- */}
 
-                <Link to='/create-listing' className='createListing'>
+                <Link to='/create-listing' className='createListing' data-aos='fade-right'>
                     <img src={homeIcon} alt="home" />
                     <p>Sell or rent your home</p>
                     <img src={arrowRight} alt="arrow right" />
@@ -162,12 +162,12 @@ function Profile() {
                         <p className="listingText">Your Listings</p>
                         <ul className="listingsList">
                             {listings.map((listing => (
-                                <ListingItem 
-                                key={listing.id} 
-                                listing={listing.data} 
-                                id={listing.id} 
-                                onDelete={() => onDelete(listing.id)} 
-                                onEdit={() => onEdit(listing.id)} 
+                                <ListingItem
+                                    key={listing.id}
+                                    listing={listing.data}
+                                    id={listing.id}
+                                    onDelete={() => onDelete(listing.id)}
+                                    onEdit={() => onEdit(listing.id)}
                                 />
                             )))}
                         </ul>

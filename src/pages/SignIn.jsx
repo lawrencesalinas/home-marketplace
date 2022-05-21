@@ -40,13 +40,13 @@ function SignIn() {
             toast.error('Bad User Credentials')
         }
     }
-        // ----------------------------------------------------------------/
+    // ----------------------------------------------------------------/
 
 
 
     return (
         <>
-            <div className="pageContainer">
+            <div className="pageContainer" data-aos='zoom-in'>
                 <header>
                     <p className="pageHeader">
                         Welcome Back!
