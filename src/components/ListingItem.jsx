@@ -11,7 +11,7 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
     return (
         <li className="categoryListing">
             <Link to={`/category/${listing.type}/${id}`} className='categoryListingLink'>
-                <img src={listing.imageUrls[0]} alt={listing.name} className='categoryListingImg' data-aos='flip-right' data-aos-delay='800' />
+                <img src={listing.imageUrls[0]} alt={listing.name} className='categoryListingImg' />
                 <div className="categoryListingDetails" data-aos='fade-left'>
                     <p className="categoryListingLocation">
                         {listing.location}
